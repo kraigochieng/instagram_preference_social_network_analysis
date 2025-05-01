@@ -23,8 +23,9 @@ def get_preferences(file_name: str):
 
 sir_tails_preferences = get_preferences("sir_tails.json")
 elvocool_preferences = get_preferences("elvocool.json")
+kalundaah_preferences = get_preferences("kalundaah.json")
 
-all_preferences = set(sir_tails_preferences + elvocool_preferences)
+all_preferences = set(sir_tails_preferences + elvocool_preferences + kalundaah_preferences)
 
 
 with open("nodes.csv", "w", newline="") as f:
@@ -36,6 +37,7 @@ with open("nodes.csv", "w", newline="") as f:
     # Add users to nodes.csv
     writer.writerow(["sir_tails", "sir_tails", "false"])
     writer.writerow(["elvocool", "elvocool", "false"])
+    writer.writerow(["kalundaah", "kalundaah", "false"])
     print("Added users to nodes.csv")
 
     # Add preferences to nodes.csv
@@ -65,5 +67,6 @@ with open("edges.csv", "w", newline="") as f:
 
     add_edges("sir_tails.json", writer)
     add_edges("elvocool.json", writer)
+    add_edges("kalundaah.json",writer)
 
     print("Added all edges")
