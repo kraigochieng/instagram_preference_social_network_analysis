@@ -1,11 +1,9 @@
 import csv
 import json
 import os
-import pprint
 
 
 def get_preferences(file_name: str):
-    print("")
     print(f"Getting preferences from {file_name}")
     with open(file_name) as f:
         file_content = f.read()
@@ -24,8 +22,14 @@ def get_preferences(file_name: str):
 sir_tails_preferences = get_preferences("sir_tails.json")
 elvocool_preferences = get_preferences("elvocool.json")
 kalundaah_preferences = get_preferences("kalundaah.json")
+sourwah_preferences = get_preferences("sourwah.json")
 
-all_preferences = set(sir_tails_preferences + elvocool_preferences + kalundaah_preferences)
+all_preferences = set(
+    sir_tails_preferences
+    + elvocool_preferences
+    + kalundaah_preferences
+    + sourwah_preferences
+)
 
 
 with open("nodes.csv", "w", newline="") as f:
@@ -38,6 +42,7 @@ with open("nodes.csv", "w", newline="") as f:
     writer.writerow(["sir_tails", "sir_tails", "false"])
     writer.writerow(["elvocool", "elvocool", "false"])
     writer.writerow(["kalundaah", "kalundaah", "false"])
+    writer.writerow(["sourwah", "sourwah", "false"])
     print("Added users to nodes.csv")
 
     # Add preferences to nodes.csv
@@ -67,6 +72,7 @@ with open("edges.csv", "w", newline="") as f:
 
     add_edges("sir_tails.json", writer)
     add_edges("elvocool.json", writer)
-    add_edges("kalundaah.json",writer)
+    add_edges("kalundaah.json", writer)
+    add_edges("sourwah.json", writer)
 
     print("Added all edges")
